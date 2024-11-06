@@ -80,9 +80,14 @@ export default function planejamento() {
         </View>
       </View>
 
-      <Image source={require("../assets/images/calendario.png")}></Image>
+      <Image
+        source={require("../assets/images/calendario.png")}
+        style={styles.calendario}
 
-      <View>
+      ></Image>
+
+      <View style={styles.listacheck}>
+        <Image source={require("../assets/images/calendario.png")}></Image>
         <Text>Tarefas:</Text>
         <View>
           {/* <CheckBox
@@ -187,5 +192,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
+  },
+
+  listacheck: {
+    flexDirection: "row",
+  },
+  
+  calendario:{
+    margin: 10,
+    
   },
 });
