@@ -88,15 +88,15 @@ export default function planejamento() {
 
       <View style={styles.listacheck}>
         <Image source={require("../assets/images/calendario.png")}></Image>
-        <Text>Tarefas:</Text>
-        <View>
+        <Text style={styles.tar}>Tarefas:</Text>
+        
+        <Text style={styles.tar}>Ler Livro Matéria 1</Text>
           {/* <CheckBox
             style={styles.box}
             value={isChecked}
             onValueChange={setChecked}
           /> */}
-          <Text>Ler Livro Matéria 1</Text>
-        </View>
+        
       </View>
       <StatusBar style="auto" />
     </View>
@@ -193,13 +193,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
   },
-
+  
   listacheck: {
     flexDirection: "row",
+    alignItems: "center",
   },
   
   calendario:{
     margin: 10,
     
   },
+
+  tar: {
+    fontWeight: 'black'
+  }
 });
