@@ -14,6 +14,8 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
 
+//import CheckBox from "expo-checkbox";
+
 import { Link, useRouter } from "expo-router";
 
 import { StatusBar } from "expo-status-bar";
@@ -33,72 +35,117 @@ export default function planejamento() {
         />
       </View>
 
-      <View style={styles.sub}>
+      <ScrollView>
+        <View style={styles.sub}>
+          <Image
+            source={require("../assets/images/seta.png")}
+            style={styles.seta}
+          ></Image>
+
+          <Text style={styles.plano}>Planejamento Estudos</Text>
+
+          <View style={styles.mais}>
+            <Image
+              source={require("../assets/images/+.png")}
+              style={styles.imais}
+            />
+          </View>
+        </View>
+
+        <View style={styles.bloco}>
+          <View style={styles.sub}>
+            <Image source={require("../assets/images/celebro.png")}></Image>
+            <Text style={styles.meta}>Metas de Estudos</Text>
+          </View>
+
+          <View style={styles.sub}>
+            <Image
+              source={require("../assets/images/ponto.png")}
+              style={styles.ponto}
+            ></Image>
+            <Text style={styles.lista}> Ler livro Matéria 1</Text>
+          </View>
+
+          <View style={styles.sub}>
+            <Image
+              source={require("../assets/images/ponto.png")}
+              style={styles.ponto}
+            ></Image>
+            <Text style={styles.lista}> Apresentação seminário</Text>
+          </View>
+
+          <View style={styles.sub}>
+            <Image
+              source={require("../assets/images/ponto.png")}
+              style={styles.ponto}
+            ></Image>
+            <Text style={styles.lista}> Redação</Text>
+          </View>
+        </View>
+
+        <View style={styles.todalista}>
+          <View style={styles.listacheck}>
+            <Image
+              style={styles.calendario}
+              source={require("../assets/images/calendario.png")}
+            ></Image>
+
+            <View>
+              <Text style={styles.afazeres}>Tarefas:</Text>
+
+              <Text style={styles.afazeres}>Ler Livro Matéria 1</Text>
+              <Text style={styles.afazeres}>Apresentação</Text>
+              <Text style={styles.afazeres}>Redação</Text>
+              <Text style={styles.afazeres}>Limpar casa</Text>
+
+              {/* <CheckBox
+
+style={styles.box}
+value={isChecked}
+onValueChange={setChecked}
+/> */}
+            </View>
+          </View>
+        </View>
         <Image
-          source={require("../assets/images/seta.png")}
-          style={styles.seta}
+          style={styles.tabela}
+          source={require("../assets/images/tabela.png")}
         ></Image>
 
-        <Text style={styles.plano}>Planejamento Estudos</Text>
+          <View style={styles.baixos}>
 
-        <View style={styles.mais}>
-          <Image
-            source={require("../assets/images/+.png")}
-            style={styles.imais}
-          />
+
+        <View style={styles.ladoe}>
+            <Image
+              style={styles.dia}
+              source={require("../assets/images/dia.png")}
+            ></Image>
+
+            <View style={styles.festa}>
+              <Text>
+                Festa:
+                <Image source={require("../assets/images/festa.png")}></Image>
+              </Text>
+
+              <Text>Faltam 1d, 9h, 50min e 30s</Text>
+            </View>
+          </View>
+
+          <View style={styles.lado}>
+            <View>
+              <Text style={styles.eventos}>Próximos eventos:</Text>
+            </View>
+            {/* <Image
+              // style={styles.relogio}
+              // source={require("../assets/images/relogio.png")}
+            ></Image> */}
+          </View>
+
+
         </View>
-      </View>
 
-      <View style={styles.bloco}>
-        <View style={styles.sub}>
-          <Image source={require("../assets/images/celebro.png")}></Image>
-          <Text style={styles.meta}>Metas de Estudos</Text>
-        </View>
-
-        <View style={styles.sub}>
-          <Image
-            source={require("../assets/images/ponto.png")}
-            style={styles.ponto}
-          ></Image>
-          <Text style={styles.lista}> Ler livro Matéria 1</Text>
-        </View>
-
-        <View style={styles.sub}>
-          <Image
-            source={require("../assets/images/ponto.png")}
-            style={styles.ponto}
-          ></Image>
-          <Text style={styles.lista}> Apresentação seminário</Text>
-        </View>
-
-        <View style={styles.sub}>
-          <Image
-            source={require("../assets/images/ponto.png")}
-            style={styles.ponto}
-          ></Image>
-          <Text style={styles.lista}> Redação</Text>
-        </View>
-      </View>
-
-      <Image
-        source={require("../assets/images/calendario.png")}
-        style={styles.calendario}
-
-      ></Image>
-
-      <View style={styles.listacheck}>
-        <Image source={require("../assets/images/calendario.png")}></Image>
-        <Text style={styles.tar}>Tarefas:</Text>
-        
-        <Text style={styles.tar}>Ler Livro Matéria 1</Text>
-          {/* <CheckBox
-            style={styles.box}
-            value={isChecked}
-            onValueChange={setChecked}
-          /> */}
-        
-      </View>
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
+      </ScrollView>
     </View>
   );
 }
@@ -193,18 +240,71 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
   },
-  
+
+  todalista: {
+    display: "flex",
+  },
+
   listacheck: {
     flexDirection: "row",
     alignItems: "center",
   },
-  
-  calendario:{
+
+  calendario: {
     margin: 10,
-    
+    marginRight: 30,
+    width: 150,
+    height: 150,
+    borderRadius: 10,
   },
 
-  tar: {
-    fontWeight: 'black'
+  afazeres: {
+    flexDirection: "row",
+    fontWeight: "black",
+  },
+
+  tabela: {
+    width: 350,
+    height: 150,
+    borderRadius: 15,
+    marginBottom: 10,
+  },
+
+  dia: {
+    width: 120,
+    height: 90,
+  },
+  relogio: {
+    width: 50,
+    height: 50,
+  },
+
+  lado: {
+    backgroundColor: "#D8CCBF",
+    marginLeft: 10,
+    width: 200,
+    height: 300,
+    borderRadius: 15,
+    padding: 10
+  },
+  
+  ladoe: {
+    backgroundColor: "blue",
+    marginLeft: 20
+  },
+  
+  eventos: {
+    fontSize: 20,
+    textAlign: 'center',
+  },
+
+  baixos:{
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
+  festa: {
+    backgroundColor: 'green',
+    width: 120
   }
 });
