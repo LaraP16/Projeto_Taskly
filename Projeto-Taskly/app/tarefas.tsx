@@ -31,12 +31,14 @@ export default function Tarefas() {
           <Text style={styles.textsaudacao}>Bom dia José!</Text>
         </View>
         <View style={styles.body}>
-          <View style={styles.mais}>
-            <Image
-              source={require("../assets/images/+.png")}
-              style={styles.imais}
-            />
-          </View>
+        <TouchableOpacity onPress={() => router.push("./criarplano")}>
+            <View style={styles.mais}>
+              <Image
+                source={require("../assets/images/+.png")}
+                style={styles.imais}
+              />
+            </View>
+          </TouchableOpacity>
           <Text style={styles.plano}>Seus planejamentos:</Text>
         </View>
 
@@ -52,7 +54,7 @@ export default function Tarefas() {
               style={styles.academia}
             />
           </TouchableOpacity>
-          
+
           <Image
             source={require("../assets/images/compras.png")}
             style={styles.academia}

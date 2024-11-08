@@ -14,7 +14,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
 
-//import CheckBox from "expo-checkbox";
+import CheckBox from "expo-checkbox";
 
 import { Link, useRouter } from "expo-router";
 
@@ -24,7 +24,10 @@ import { StatusBar } from "expo-status-bar";
 export default function planejamento() {
   const [step, setStep] = useState(1);
 
-  const [isChecked, setChecked] = useState(false);
+  const [livro, Livro] = useState(false);
+  const [apresentacao, Apresentação] = useState(false);
+  const [redacao, Redacao] = useState(false);
+  const [casa, Casa] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -37,10 +40,13 @@ export default function planejamento() {
 
       <ScrollView>
         <View style={styles.sub}>
+
+        <TouchableOpacity onPress={() => router.push("./tarefas")}>
           <Image
             source={require("../assets/images/seta.png")}
             style={styles.seta}
           ></Image>
+          </TouchableOpacity>
 
           <Text style={styles.plano}>Planejamento Estudos</Text>
 
@@ -93,17 +99,45 @@ export default function planejamento() {
             <View>
               <Text style={styles.afazeres}>Tarefas:</Text>
 
-              <Text style={styles.afazeres}>Ler Livro Matéria 1</Text>
-              <Text style={styles.afazeres}>Apresentação</Text>
-              <Text style={styles.afazeres}>Redação</Text>
-              <Text style={styles.afazeres}>Limpar casa</Text>
+              <View style={styles.chiq}>
+                <CheckBox
+                  style={styles.box}
+                  value={livro}
+                  onValueChange={Livro}
+                  color={livro ? "#0B3B60" : undefined}
+                />
+                <Text style={styles.afazeres}>   Ler Livro Matéria 1</Text>
+              </View>
 
-              {/* <CheckBox
+              <View style={styles.chiq}>
+                <CheckBox
+                  style={styles.box}
+                  value={apresentacao}
+                  onValueChange={Apresentação}
+                  color={apresentacao ? "#0B3B60" : undefined}
+                  />
+                <Text style={styles.afazeres}>   Apresentação</Text>
+                  </View>
 
-style={styles.box}
-value={isChecked}
-onValueChange={setChecked}
-/> */}
+                <View style={styles.chiq}>
+                  <CheckBox
+                    style={styles.box}
+                    value={redacao}
+                    onValueChange={Redacao}
+                    color={redacao ? "#0B3B60" : undefined}
+                  />
+                  <Text style={styles.afazeres}>   Redação</Text>
+              </View>
+
+              <View style={styles.chiq}>
+                <CheckBox
+                  style={styles.box}
+                  value={casa}
+                  onValueChange={Casa}
+                  color={casa ? "#0B3B60" : undefined}
+                />
+                <Text style={styles.afazeres}>   Limpar casa</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -112,10 +146,8 @@ onValueChange={setChecked}
           source={require("../assets/images/tabela.png")}
         ></Image>
 
-          <View style={styles.baixos}>
-
-
-        <View style={styles.ladoe}>
+        <View style={styles.baixos}>
+          <View style={styles.ladoe}>
             <Image
               style={styles.dia}
               source={require("../assets/images/dia.png")}
@@ -135,13 +167,33 @@ onValueChange={setChecked}
             <View>
               <Text style={styles.eventos}>Próximos eventos:</Text>
             </View>
-            {/* <Image
-              // style={styles.relogio}
-              // source={require("../assets/images/relogio.png")}
-            ></Image> */}
+
+            <View style={styles.chiqu}>
+
+            <Image
+              style={styles.relogio}
+              source={require("../assets/images/relogio.png")}
+              ></Image>
+
+            <Text style={styles.chiqut}>
+            Reunião- 3pm
+            </Text>
+              </View>
+
+            <View style={styles.chiqu}>
+
+            <Image
+              style={styles.relogio}
+              source={require("../assets/images/relogio.png")}
+              ></Image>
+
+            <Text style={styles.chiqut}>
+            Festa Aniversário-10pm
+            </Text>
+              </View>
+          
+          
           </View>
-
-
         </View>
 
         <StatusBar style="auto" />
@@ -171,6 +223,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 150,
     marginTop: 10,
+    padding: 10
   },
 
   bloco: {
@@ -179,8 +232,8 @@ const styles = StyleSheet.create({
     height: 230,
     marginTop: 20,
     borderRadius: 15,
-    paddingLeft: 20,
     paddingBottom: 150,
+    marginLeft: 20
   },
 
   sub: {
@@ -222,10 +275,12 @@ const styles = StyleSheet.create({
 
   lista: {
     fontSize: 20,
+    padding: 5
   },
-
+  
   ponto: {
     marginTop: 10,
+    padding: 5
   },
 
   checkbox: {
@@ -252,9 +307,9 @@ const styles = StyleSheet.create({
 
   calendario: {
     margin: 10,
-    marginRight: 30,
-    width: 150,
-    height: 150,
+    marginRight: 10,
+    width: 200,
+    height: 200,
     borderRadius: 10,
   },
 
@@ -262,49 +317,68 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     fontWeight: "black",
   },
+  chiq: {
+    flexDirection: "row",
+  },
+  chiqu: {
+    flexDirection: "row",
+  },
+  chiqut: {
+    flexDirection: "row",
+    paddingTop: 20,
+    fontSize: 15
+  },
 
   tabela: {
-    width: 350,
+    width: 395,
     height: 150,
     borderRadius: 15,
     marginBottom: 10,
   },
 
   dia: {
-    width: 120,
-    height: 90,
+    width: 190,
+    height: 120,
   },
   relogio: {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
+    marginTop: 10,
+    marginLeft: -5
   },
 
   lado: {
     backgroundColor: "#D8CCBF",
-    marginLeft: 10,
+    
     width: 200,
-    height: 300,
+    height: 200,
     borderRadius: 15,
-    padding: 10
-  },
-  
-  ladoe: {
-    backgroundColor: "blue",
-    marginLeft: 20
-  },
-  
-  eventos: {
-    fontSize: 20,
-    textAlign: 'center',
+    padding: 10,
   },
 
-  baixos:{
-    display: 'flex',
-    flexDirection: 'row'
+  ladoe: {
+    marginLeft: 10,
+  },
+
+  eventos: {
+    fontSize: 20,
+    textAlign: "center",
+  },
+
+  baixos: {
+    display: "flex",
+    flexDirection: "row",
   },
 
   festa: {
-    backgroundColor: 'green',
-    width: 120
-  }
+    backgroundColor: "#F5EACF",
+    width: 150,
+    height: 100,
+    borderRadius: 15,
+    marginLeft: 20,
+    marginTop: 10,
+    padding: 10,
+    fontSize: 15
+
+  },
 });
